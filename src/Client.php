@@ -1,7 +1,7 @@
 <?php
 namespace Sidecar;
 
-use Sidecar\Client\Middleware
+use Sidecar\Client\Middleware;
 use Sidecar\Client\Middleware\{Control,After1,Before1};
 
 class Client
