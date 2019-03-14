@@ -1,5 +1,5 @@
 {
-    "name": "phpmicroservice/php-sidecar",
+    "name": "phpms/php-sidecar",
     "type": "library",
     "description": "php Microservice Provide",
     "license": "Apache-2.0",

@@ -1,8 +1,8 @@
 <?php
-namespace phpmicroservice;
+namespace phpms;
 
-use phpmicroservice\Client\Middleware
-use phpmicroservice\Client\Middleware\{Control,After1,Before1};
+use phpms\Client\Middleware
+use phpms\Client\Middleware\{Control,After1,Before1};
 
 class Client
 {

@@ -1,5 +1,5 @@
 <?php
-namespace phpmicroservice\Client;
+namespace phpms\Client;
 
 class Middleware {
 

@@ -1,8 +1,5 @@
 <?php
-namespace phpmicroservice\client\services;
-
-use think\console\Input;
-use think\console\Output;
+namespace phpms\client\services;
 
 class Listen
 {
@@ -14,12 +11,12 @@ class Listen
         
     }
 
-    public function initialize(Input $input, Output $output)
+    public function initialize()
     {
         
     }
 
-    public function execute(Input $input, Output $output)
+    public function execute()
     {
         
     }

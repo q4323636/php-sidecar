@@ -1,5 +1,5 @@
 <?php
-namespace phpmicroservice\Client\middleware;
+namespace phpms\Client\middleware;
 
 class After1 {
     public static function handle($request, Closure $next) {

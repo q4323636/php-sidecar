@@ -1,5 +1,5 @@
 <?php
-namespace phpmicroservice\Client\middleware;
+namespace phpms\Client\middleware;
 
 //模拟的控制器
 class Control {
