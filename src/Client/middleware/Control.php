@@ -1,5 +1,5 @@
 <?php
-namespace phpms\Client\middleware;
+namespace Sidecar\Client\middleware;
 
 //模拟的控制器
 class Control {

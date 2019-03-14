@@ -1,5 +1,5 @@
 <?php
-namespace phpms\Client;
+namespace Sidecar\Client;
 
 class Middleware {
 

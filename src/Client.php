@@ -1,8 +1,8 @@
 <?php
-namespace phpms;
+namespace Sidecar;
 
-use phpms\Client\Middleware
-use phpms\Client\Middleware\{Control,After1,Before1};
+use Sidecar\Client\Middleware
+use Sidecar\Client\Middleware\{Control,After1,Before1};
 
 class Client
 {

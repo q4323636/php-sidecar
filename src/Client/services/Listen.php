@@ -1,5 +1,5 @@
 <?php
-namespace phpms\client\services;
+namespace Sidecar\client\services;
 
 class Listen
 {

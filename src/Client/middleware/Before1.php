@@ -1,5 +1,5 @@
 <?php
-namespace phpms\Client\middleware;
+namespace Sidecar\Client\middleware;
 
 class Before1 {
     public static function handle($request, Closure $next) {
