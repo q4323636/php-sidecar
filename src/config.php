@@ -1,0 +1,4 @@
+<?php
+return [
+    'connector' => 'Sync'
+];
