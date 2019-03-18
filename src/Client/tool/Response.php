@@ -3,6 +3,9 @@ namespace Sidecar\Client\tool;
 
 class Response
 {
+    //目录分割符
+    const DS = DIRECTORY_SEPARATOR;
+
     /**
      * 原始数据
      * @var mixed
@@ -103,8 +106,42 @@ class Response
         }
     }
 
+    /**
+     * [output 输出结果]
+     * @return [type] [description]
+     */
     public function output(){
         print_r(json_encode(["rcode"=>$this->getData(),"rdata"=>$this->getContent()]));
+    }
+
+    /**
+     * rizhi 
+     * @param type $text
+     * @param type $file
+     */
+    public function writeLog($text = '', $file = "debug--xmpush") {
+        $folder = "." . self::DS . "Logs";
+        if (!is_dir($folder)) {
+            mkdir($folder);
+        }
+        $filename = $folder . self::DS . $file . date("Y-m-d H") . '.txt';
+        $text = "[" . date("Y-m-d H:i:s") . "]" . $text;
+        $text .= "\r\n";
+        $handle = fopen($filename, "a");
+        fwrite($handle, $text);
+        fclose($handle);
+    }
+
+    /**
+     * 处理接口header 信息 保证能跨域
+     */
+    public function crossDomain() {
+        header('Access-Control-Allow-Origin:* ');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, authKey, sessionId");
+        header('Content-Type:application/json; charset=utf-8');
+        header('X-Powered-By:FANGFEI-PLATFORM');
     }
     
 }
