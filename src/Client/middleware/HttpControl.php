@@ -15,10 +15,10 @@ class Httpcontrol {
     	
     	$chttp = new Http();
     	$creturn = $chttp->curlRetry($request['url']);
-    	
-    	($request["rdate"])->data($creturn);
-    	sleep(3);
-		echo 'control ',\PHP_EOL;
+    	($request["rdate"])->setData($creturn);
+
+    	//sleep(3);
+		//echo 'control ',\PHP_EOL;
     	
     }
 

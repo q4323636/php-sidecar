@@ -7,7 +7,7 @@ class Response
      * 原始数据
      * @var mixed
      */
-    protected $data;
+    protected $data = 0;
 
     /**
      * 状态码
@@ -21,9 +21,6 @@ class Response
      */
     protected $content = null;
 
-    protected $starttime = 0;
-    protected $endtime = 0;
-
     /**
      * 架构函数
      * @access public
@@ -32,80 +29,56 @@ class Response
      * @param  array $header
      * @param  array $options 输出参数
      */
-    public function __construct($data = '', $code = 200){
+    public function __construct($data = 0, $code = 200){
     
-        $this->data($data);
+        $this->setData($data);
         $this->code   = $code;
-    }    
+    } 
 
-    /**
-     * 输出数据设置
-     * @access public
-     * @param  mixed $data 输出数据
-     * @return $this
-     */
-    public function data($data)
-    {
+    public function setData($data){
+        if ($data) {
+            $this->setContent("success");
+        }else{
+            $this->setContent("error");
+        }
         $this->data = $data;
 
         return $this;
     }
 
-    /**
-     * 发送HTTP状态
-     * @access public
-     * @param  integer $code 状态码
-     * @return $this
-     */
-    public function code($code)
-    {
+    public function getData(){
+        return $this->data;
+    }
+
+    public function setCode($code){
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * 获取原始数据
-     * @access public
-     * @return mixed
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-    /**
-     * 获取状态码
-     * @access public
-     * @return integer
-     */
-    public function getCode()
-    {
+    public function getCode(){
         return $this->code;
     }
 
-    public function __debugInfo()
-    {
+    public function __debugInfo(){
         $data = get_object_vars($this);
         unset($data['app']);
 
         return $data;
     }
 
-    /**
-     * 获取输出数据
-     * @access public
-     * @return mixed
-     */
-    public function getContent()
-    {
+    public function setContent($content){
+        $this->content = $content;
+     
+    }
+
+    public function getContent(){
         if (null == $this->content) {
-            $content = $this->output($this->data);
 
             if (null !== $content && !is_string($content) && !is_numeric($content) && !is_callable([
-                $content,
-                '__toString',
-            ])
+                                                                                                        $content,
+                                                                                                        '__toString',
+                                                                                                    ])
             ) {
                 throw new \InvalidArgumentException(sprintf('variable type error： %s', gettype($content)));
             }
@@ -116,5 +89,22 @@ class Response
         return $this->content;
     }
 
+    /**
+     * [forward FallBack]
+     * @param  string $furl [description]
+     * @return [type]       [description]
+     */
+    public function forward($furl=''){
+        if (!empty($url)) {
+            header("location:".$url);
+        }else{
+            $this->setContent("Access error, please contact administrator");
+            $this->output();
+        }
+    }
+
+    public function output(){
+        print_r(json_encode(["rcode"=>$this->getData(),"rdata"=>$this->getContent()]));
+    }
     
 }
