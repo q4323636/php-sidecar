@@ -23,9 +23,9 @@ class FuseBefore {
     			}else{
     				$data['status'] = 0;
     			}
-    		}else{
-    			$mupd = $mysql->update($data);
     		}
+
+    		$mupd = $mysql->update($data);
     		
     	}
         
